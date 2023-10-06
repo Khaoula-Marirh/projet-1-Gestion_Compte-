@@ -33,4 +33,7 @@ public class Operation extends Compte {
     public static String getOp(){
         return op;
     }
+    public String toString(){
+        return "Compte 1"+ "code="+getCode()+"statut="+getStatus()+"operations="+getOperations();
+    }
 }

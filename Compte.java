@@ -14,9 +14,9 @@ public class Compte {
     private CStatuts status;
     private static ArrayList<Operation> Operations;
     //constructeur avec parametre
-    public Compte(int code,double solde,CStatuts status,int nomberCom ,ArrayList<Operation> Operations){
+    public Compte(int code,double solde,CStatuts status){
         this.code=++nomberCom;
-        this.solde=0;
+        Compte.solde =0;
         this.status=CStatuts.CREATED;
         this.nomberCom=nomberCom;
         this.Operations = new ArrayList<>();
@@ -67,26 +67,27 @@ public class Compte {
         }
     }
 
-    public static void retirer(float mont) throws soldeInsuffisantException, soldeNegatifException {
-        if(mont>=0){
-            throw new soldeInsuffisantException("Votre solde insuffisant");
+    public void affiOperations(){
+        for (Operation e:Operations){
+            System.out.println(e.toString());
         }
-        if (mont<0){
-            throw new soldeNegatifException("Le montant negatif");
-        }
-        solde = solde - mont;
-        Operations.add(new Operation(new Date(),"retrait",mont));
-
     }
+
+
     //méthode publique qui afficher le reste du solde
     public String RstSolde() {
-        return ("solde=" + solde);
+        return ("Solde :" + solde);
     }
+
+
     //
-    public void Transfer(Compte c2, int i){
+    public void Transfer(){
         for (Operation op : Operations) {
             System.out.println(" " + op.getNumeroOperation()+" "+Operation.getDateOperation() +" "+ Operation.getOp()+" "+ op.getMont());
         }
+    }
+    public String toString(){
+        return "Compte 1"+ "code="+code+"statut="+status+"operations="+getOperations();
     }
 
 
